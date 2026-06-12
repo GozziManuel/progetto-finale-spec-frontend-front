@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import "./assets/css/App.css";
 import DefaultLayout from "./layout/DefaultLayout";
 import HomePage from "./pages/HomePage";
+import SmartShopPage from "./pages/SmarShopPage";
 
 function App() {
   return (
@@ -9,6 +9,7 @@ function App() {
       <Routes>
         <Route element={<DefaultLayout />}>
           <Route element={<HomePage />} path="/" />
+          <Route element={<SmartShopPage />} path="/SmartShop" />
         </Route>
       </Routes>
     </BrowserRouter>

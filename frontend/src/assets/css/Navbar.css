@@ -1,0 +1,38 @@
+.navbar {
+  background-color: #161b22; /* Grigio/blu scuro */
+  border-bottom: 1px solid #21262d; /* Linea sottile di divisione */
+  --bs-navbar-toggler-icon-bg: url(
+    data:image/svg + xml,
+    %3csvgxmlns="http://www.w3.org/2000/svg"viewBox="0 0 30 30"%3e%3cpathstroke="rgb%28255, 255, 255%29"stroke-linecap="round"stroke-miterlimit="10"stroke-width="2"d="M4 7h22M4 15h22M4 23h22"/%3e%3c/svg%3e
+  ) !important
+;
+}
+
+/* Colore dei link nella Navbar */
+#navbar-brand {
+  color: #ffffff;
+  transition: transform 0.3s ease-in-out;
+}
+#nav-item {
+  color: #ffffff !important;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+#nav-item:hover {
+  color: #00f2fe !important;
+}
+#navbar-brand:hover {
+  color: #00f2fe !important;
+  transform: scale(1.1);
+}
+.iconImg {
+  width: 62px;
+  height: 60px;
+  margin-right: 20px;
+}
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgb%28255, 255, 255%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+.navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}

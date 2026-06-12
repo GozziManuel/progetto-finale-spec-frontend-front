@@ -1,35 +1,42 @@
+import { Link } from "react-router-dom";
+import "../assets/css/Navbar.css";
+
 export default function NavBar() {
   return (
     <>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">
-          Navbar
-        </a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNavAltMarkup"
-          aria-controls="navbarNavAltMarkup"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="#">
-              Home <span class="sr-only">(current)</span>
-            </a>
-            <a class="nav-item nav-link" href="#">
-              Features
-            </a>
-            <a class="nav-item nav-link" href="#">
-              Pricing
-            </a>
-            <a class="nav-item nav-link disabled" href="#">
-              Disabled
-            </a>
+      <nav className="navbar navbar-expand-lg fixed-top " id="">
+        <div className="container-fluid">
+          <div className="d-flex align-items-center">
+            <img src="/pocketShop-icon.png" alt="" className="iconImg" />
+
+            <Link className="navbar-brand orbitron" to={"/"} id="navbar-brand">
+              PocketShop
+            </Link>
+          </div>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav">
+              <li className="nav-item d-flex">
+                <Link
+                  className="nav-link active ms-3"
+                  aria-current="page"
+                  to={"/SmartShop"}
+                  id="nav-item"
+                >
+                  SmartShop...
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
       </nav>

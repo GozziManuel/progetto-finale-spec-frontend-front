@@ -1,0 +1,10 @@
+.mainContainer {
+  background-color: #0d1117;
+  color: #f0f6fc;
+  min-height: 100vh;
+}
+
+/* Colors */
+.white {
+  color: #ffffff !important;
+}
