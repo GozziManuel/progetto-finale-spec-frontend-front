@@ -19,3 +19,24 @@ body {
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+/* Container */
+.containerBase {
+  margin-right: 120px;
+  margin-left: 120px;
+  margin-top: 90px;
+}
+@media screen and (max-width: 430px) {
+  .containerBase {
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 90px;
+  }
+}
+@media screen and (max-width: 298px) {
+  .containerBase {
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 120px;
+  }
+}

@@ -1,0 +1,17 @@
+.SmartphoneCard {
+  border: 1px black solid;
+  color: white;
+  padding: 15px;
+  background-color: #1b2330;
+}
+.seeMoreButton {
+  border: purple solid 2px;
+  color: purple;
+  background-color: transparent;
+}
+.seeMoreButton:hover {
+  background-color: purple;
+  color: white;
+  transition: background-color 500ms linear;
+  transition: color 200ms linear;
+}
