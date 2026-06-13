@@ -3,12 +3,12 @@ import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 export default function DefaultLayout() {
   return (
-    <>
+    <div className="d-flex flex-column min-vh-100">
       <NavBar />
-      <section>
+      <main className="flex-grow-1">
         <Outlet />
-      </section>
+      </main>
       <Footer />
-    </>
+    </div>
   );
 }

@@ -4,6 +4,8 @@
   padding: 15px;
   background-color: #1b2330;
 }
+
+/* Buttons */
 .seeMoreButton {
   border: purple solid 2px;
   color: purple;
@@ -14,4 +16,30 @@
   color: white;
   transition: background-color 500ms linear;
   transition: color 200ms linear;
+}
+
+/* button 2 */
+.NavigateButton {
+  border: lightblue solid 2px;
+  color: lightblue;
+  background-color: transparent;
+}
+.NavigateButton:hover {
+  background-color: lightblue;
+  color: black;
+  transition: background-color 500ms linear;
+  transition: color 200ms linear;
+}
+/* Detialed */
+
+.phoneImg {
+  width: 300px;
+  border: solid 2px rgb(72, 122, 168);
+}
+.containerInfoPhone {
+  gap: 15px;
+}
+.titleSpan {
+  color: lightblue;
+  font-weight: bold;
 }

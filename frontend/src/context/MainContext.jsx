@@ -4,7 +4,6 @@ const MainContext = createContext();
 
 export default function MainProvider({ children }) {
   const [product, setProduct] = useState([]);
-  const [productDetailed, setProductDetailed] = useState([]);
 
   const handleAsync = async (url) => {
     const response = await fetch(url);
@@ -35,8 +34,6 @@ export default function MainProvider({ children }) {
   const values = {
     product,
     setProduct,
-    productDetailed,
-    setProductDetailed,
     productsDetailed,
   };
 

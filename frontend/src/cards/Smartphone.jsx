@@ -7,16 +7,16 @@ export default function Smartphone({ category, title, id }) {
       <div>
         <div className=" spaceGrotesk ">
           <p>
-            <span className="fw-bold ColorMain">category:</span> {category}
+            <span className="fw-bold ColorMain">Category:</span> {category}
           </p>
           <p>
-            <span className="fw-bold ColorMain">name:</span> {title}
+            <span className="fw-bold ColorMain">Name:</span> {title}
           </p>
           <Link
-            className="seeMoreButton px-3 py-2 my-1 d-inline-block"
+            className="seeMoreButton px-3 py-2 my-1 d-inline-block text-decoration-none"
             to={`/Phone/${id}`}
           >
-            See info!
+            Vedi info!
           </Link>
         </div>
       </div>
