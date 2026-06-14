@@ -1,10 +1,11 @@
 import { useMain } from "../context/MainContext";
 import Smartphone from "../cards/Smartphone";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 export default function SmartShopPage() {
   const { product } = useMain();
   const [searchBar, setSearchBar] = useState("");
+  const [select, setSelect] = useState("");
   const [FilteredProduct, setFilteredProduct] = useState([...product]);
 
   const [titleOrder, setTitleOrder] = useState(false);
@@ -16,20 +17,36 @@ export default function SmartShopPage() {
 
   //
   // SearchBar
-  const FilteredSearchProduct = FilteredProduct.filter((el) =>
-    el.title.toLowerCase().trim().includes(searchBar.toLowerCase().trim()),
-  );
+  const FilteredSearchProduct = useMemo(() => {
+    return FilteredProduct.filter((el) => {
+      const searchFilter = el.title
+        .toLowerCase()
+        .trim()
+        .includes(searchBar.toLowerCase().trim());
+      if (select === "") {
+        return searchFilter;
+      }
 
+      const selectfilter = el.category.toLowerCase() === select.toLowerCase();
+
+      return searchFilter && selectfilter;
+    });
+  }, [FilteredProduct, select, searchBar]);
   //
-  //
+  //Select
+
   // ORderTitle
   const orderTitleProduct = () => {
     if (titleOrder) {
-      FilteredProduct.sort((a, b) => a.title.localeCompare(b.title, "it"));
-      setTitleOrder(false);
+      (FilteredSearchProduct.sort((a, b) =>
+        a.title.localeCompare(b.title, "it"),
+      ),
+        setTitleOrder(false));
     } else {
-      FilteredProduct.sort((a, b) => b.title.localeCompare(a.title, "it"));
-      setTitleOrder(true);
+      (FilteredSearchProduct.sort((a, b) =>
+        b.title.localeCompare(a.title, "it"),
+      ),
+        setTitleOrder(true));
     }
   };
 
@@ -38,21 +55,25 @@ export default function SmartShopPage() {
   // OrderCategory
   const orderCategoryProduct = () => {
     if (categoryOrder) {
-      FilteredProduct.sort((a, b) => a.title.localeCompare(b.category, "it"));
-      setCategoryOrder(false);
+      (FilteredSearchProduct.sort((a, b) =>
+        a.title.localeCompare(b.category, "it"),
+      ),
+        setCategoryOrder(false));
     } else {
-      FilteredProduct.sort((a, b) => b.title.localeCompare(a.category, "it"));
-      setCategoryOrder(true);
+      (FilteredSearchProduct.sort((a, b) =>
+        b.title.localeCompare(a.category, "it"),
+      ),
+        setCategoryOrder(true));
     }
   };
   //
   //
-  //
+
   return (
     <section className="containerBase">
       <h1 className="orbitron ColorMain">SmartShop</h1>
       <h2 className="spaceGrotesk">Scegli il tuo telefono!</h2>
-      <div className="d-flex spaceGrotesk justify-content-between align-items-center flex-wrap">
+      <div className="d-flex spaceGrotesk justify-content-between  flex-wrap">
         <div className="d-flex flex-column">
           Cerca il tuo telefono!
           <input
@@ -61,7 +82,20 @@ export default function SmartShopPage() {
             value={searchBar}
             className="me-5 searchbar mt-1"
           />
+          <div className=" mt-4">
+            Cerca per categoria...
+            <br />
+            <select
+              className=" p-1"
+              onChange={(e) => setSelect(e.target.value)}
+              value={select}
+            >
+              <option value=""></option>
+              <option value="Smartphone">Smartphone</option>
+            </select>
+          </div>
         </div>
+
         <div className="d-flex flex-column  align-items-center flex-wrap ">
           Ordine Alfabatico
           <div className="d-flex justify-content-center align-items-center">
@@ -87,17 +121,28 @@ export default function SmartShopPage() {
           </div>
         </div>
       </div>
-      <div className="row g-5 mt-3">
-        {FilteredSearchProduct.map((el) => {
-          return (
-            <div
-              className="col-lg-4 col-12 col-xl-2 col-xxl-2 col-md-4 col-sm-6"
-              key={el.id}
-            >
-              <Smartphone category={el.category} title={el.title} id={el.id} />
-            </div>
-          );
-        })}
+      <div className="row g-5 mt-0  ">
+        {FilteredSearchProduct.length === 0 ? (
+          <h3 className="spaceGrotesk ColorMain">
+            Ancora non abbiamo quel modello magari lo aggiungeremo presto{" "}
+            <i className="bi bi-emoji-laughing-fill"></i>
+          </h3>
+        ) : (
+          FilteredSearchProduct.map((el) => {
+            return (
+              <div
+                className="col-lg-4 col-12 col-xl-2 col-xxl-2 col-md-4 col-sm-6"
+                key={el.id}
+              >
+                <Smartphone
+                  category={el.category}
+                  title={el.title}
+                  id={el.id}
+                />
+              </div>
+            );
+          })
+        )}
       </div>
     </section>
   );

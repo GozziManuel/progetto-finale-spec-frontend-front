@@ -30,6 +30,10 @@
   transition: background-color 500ms linear;
   transition: color 200ms linear;
 }
+select {
+  height: 30px;
+  width: 209px;
+}
 /* Detialed */
 
 .phoneImg {
