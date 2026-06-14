@@ -43,3 +43,25 @@
   color: lightblue;
   font-weight: bold;
 }
+
+/*  */
+/* Buttons for order */
+.OrderButton {
+  border: solid purple 2px;
+  padding: 10px;
+  background-color: #1b2330;
+  min-width: 90px;
+  cursor: pointer;
+}
+.searchbar {
+  height: 30px;
+}
+
+/* star */
+.star {
+  position: absolute;
+  left: 88%;
+  top: 0%;
+  cursor: pointer;
+  color: yellow;
+}

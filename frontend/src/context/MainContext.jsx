@@ -12,7 +12,7 @@ export default function MainProvider({ children }) {
   };
 
   const products = async () => {
-    const productList = handleAsync(`http://localhost:3001/products`);
+    const productList = await handleAsync(`http://localhost:3001/products`);
     return productList;
   };
   useEffect(() => {
@@ -26,15 +26,34 @@ export default function MainProvider({ children }) {
   //
   //
   const productsDetailed = async (id) => {
-    const productList = handleAsync(`http://localhost:3001/products/${id}`);
+    const productList = await handleAsync(
+      `http://localhost:3001/products/${id}`,
+    );
     return productList;
   };
   //
 
+  //
+  //
+  // PReferiti
+  const [favourites, setFavourites] = useState([]);
+
+  const addFavourites = (num) => {
+    const obj = product.find((el) => el.id === num);
+    if (favourites.find((el) => el === obj)) {
+      const trueFavoutites = favourites.filter((el) => el !== obj);
+      setFavourites(trueFavoutites);
+    } else {
+      setFavourites((prev) => [...prev, obj]);
+    }
+  };
   const values = {
     product,
     setProduct,
     productsDetailed,
+    addFavourites,
+    setFavourites,
+    favourites,
   };
 
   return <MainContext.Provider value={values}>{children}</MainContext.Provider>;

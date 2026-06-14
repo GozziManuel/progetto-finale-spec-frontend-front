@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 export default function DefaultLayout() {
@@ -8,6 +8,9 @@ export default function DefaultLayout() {
       <main className="flex-grow-1">
         <Outlet />
       </main>
+      <Link className=" favouritestar spaceGrotesk" to={"/favourites"}>
+        Preferiti
+      </Link>
       <Footer />
     </div>
   );

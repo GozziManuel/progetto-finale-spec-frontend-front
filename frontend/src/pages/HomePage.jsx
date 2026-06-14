@@ -55,12 +55,14 @@ export default function HomePage() {
 
             <div className="row g-5 mt-3 d-flex justify-content-center">
               {spliced.map((el) => (
-                <div className="col-lg-4 col-12 col-xl-3 col-xxl-3 col-md-4 col-sm-6">
+                <div
+                  className="col-lg-4 col-12 col-xl-3 col-xxl-3 col-md-4 col-sm-6"
+                  key={el.id}
+                >
                   <Smartphone
                     category={el?.category}
                     title={el?.title}
                     id={el?.id}
-                    key={el?.id}
                   />
                 </div>
               ))}

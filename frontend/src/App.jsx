@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage";
 import SmartShopPage from "./pages/SmarShopPage";
 import MainProvider from "./context/MainContext";
 import DetailedSmartphone from "./pages/DetailedSmartphone";
+import FavouritesPage from "./pages/FavouritesPage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
             <Route element={<HomePage />} path="/" />
             <Route element={<SmartShopPage />} path="/SmartShop" />
             <Route element={<DetailedSmartphone />} path="/Phone/:id" />
+            <Route element={<FavouritesPage />} path="/favourites" />
           </Route>
         </Routes>
       </BrowserRouter>

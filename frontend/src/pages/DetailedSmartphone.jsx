@@ -19,8 +19,6 @@ export default function DetailedSmartphone() {
     resultProductDetailed();
   }, []);
 
-  console.log(productDetailed);
-
   return (
     <section className="containerBase">
       <div>
