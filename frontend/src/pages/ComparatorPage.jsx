@@ -32,13 +32,14 @@ export default function ComparatorPage() {
             );
           })}
         </div>
+        <hr className="mt-5 mb-0" />
       </section>
 
       {/* COMPARATOR */}
       <section className="ComparatorContainer">
-        <div className="mt-5">
+        <div className="mt-1">
           <h2 className="orbitron ColorMain text-center">Vedi Comparazioni</h2>
-          <div className="row g-5 mt-0  ">
+          <div className="row g-5 mt-0 d-flex justify-content-center ">
             {comparatedProduct.map((el) => {
               return (
                 <div
@@ -56,16 +57,16 @@ export default function ComparatorPage() {
           </div>
           <div className="d-flex justify-content-center">
             {comparatedProduct.length === 0 ? (
-              <h4 className="spaceGrotesk ColorMain mt-5">
+              <h4 className="spaceGrotesk ColorMain mt-3 mb-5">
                 Aggiungi Smarthpone Al comparatore!
               </h4>
             ) : comparatedProduct.length === 1 ? (
-              <h4 className="spaceGrotesk ColorMain mt-5">
+              <h4 className="spaceGrotesk ColorMain mt-3 mb-5">
                 Aggiungine Almeno 2 per comparare!
               </h4>
             ) : (
               <button
-                className="compareButton mt-5 "
+                className="compareButton my-5 "
                 onClick={() => ComparatorFetch()}
               >
                 COMPARA!
@@ -74,7 +75,12 @@ export default function ComparatorPage() {
           </div>
         </div>
         <div className="row g-5 d-flex justify-content-center">
-          <h2 className="orbitron text-center">Ecco il risultato!</h2>
+          {comparatedArray.length === 0 ? (
+            <div></div>
+          ) : (
+            <h2 className="orbitron text-center">Ecco il risultato!</h2>
+          )}
+
           {comparatedArray.map((el) => {
             return (
               <div

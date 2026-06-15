@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "../assets/css/Navbar.css";
 
 export default function NavBar() {
@@ -9,9 +9,13 @@ export default function NavBar() {
           <div className="d-flex align-items-center">
             <img src="/pocketShop-icon.png" alt="" className="iconImg" />
 
-            <Link className="navbar-brand orbitron" to={"/"} id="navbar-brand">
+            <NavLink
+              className="navbar-brand orbitron"
+              to={"/"}
+              id="navbar-brand"
+            >
               PocketShop
-            </Link>
+            </NavLink>
           </div>
           <button
             className="navbar-toggler"
@@ -27,24 +31,24 @@ export default function NavBar() {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item d-flex">
-                <Link
-                  className="nav-link active ms-3"
+                <NavLink
+                  className="nav-link  ms-3"
                   aria-current="page"
                   to={"/SmartShop"}
                   id="nav-item"
                 >
                   SmartShop...
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-item d-flex">
-                <Link
-                  className="nav-link active ms-3"
+                <NavLink
+                  className="nav-link  ms-3"
                   aria-current="page"
                   to={"/Comparator"}
                   id="nav-item"
                 >
                   Comparatore
-                </Link>
+                </NavLink>
               </li>
             </ul>
           </div>

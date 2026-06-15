@@ -28,18 +28,13 @@ export default function HomePage() {
 
               {/* Buttons */}
               <div className=" gap-2 d-sm-flex justify-content-sm-center spaceGrotesk">
-                <button
-                  type="button"
-                  className="btn btn-primary  px-4 me-3 ButtonHome1"
-                >
-                  Inizia Ora
-                </button>
-                <button
+                <Link
                   type="button"
                   className="btn btn-outline-secondary   px-4 ButtonHome2  "
+                  to={"/Smartshop"}
                 >
                   Scopri di più
-                </button>
+                </Link>
               </div>
             </div>
           </div>
