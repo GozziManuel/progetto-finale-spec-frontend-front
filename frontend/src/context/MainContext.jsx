@@ -47,6 +47,49 @@ export default function MainProvider({ children }) {
       setFavourites((prev) => [...prev, obj]);
     }
   };
+  //
+  //
+  // Comparator
+  const [comparatedProduct, setComparatedProduct] = useState([]);
+
+  const addToComparator = (id) => {
+    const CurrentPhone = product.find((el) => el.id === id);
+    if (comparatedProduct.find((el) => el === CurrentPhone)) {
+      const trueComparated = comparatedProduct.filter(
+        (el) => el !== CurrentPhone,
+      );
+
+      setComparatedProduct(trueComparated);
+    } else {
+      setComparatedProduct((curr) => [...curr, CurrentPhone]);
+    }
+  };
+
+  //
+  //
+  // Comparator Fetch
+  const [comparatedArray, setComparatedArray] = useState([]);
+  const ComparatorFetch = async () => {
+    setComparatedArray([]);
+    setComparatedProduct([]);
+    const arrayId = comparatedProduct.map(
+      (el) => `http://localhost:3001/products/${el.id}`,
+    );
+    console.log(arrayId);
+
+    await Promise.all(
+      arrayId.map((url) => fetch(url).then((res) => res.json())),
+    ).then((val) =>
+      val.forEach((el) => {
+        setComparatedArray((curr) => [...curr, el.product]);
+      }),
+    );
+  };
+  console.log(comparatedArray);
+
+  //(val) => setComparatedArray((curr) => [...curr, val.product]
+  //
+  // EXPORT
   const values = {
     product,
     setProduct,
@@ -54,6 +97,10 @@ export default function MainProvider({ children }) {
     addFavourites,
     setFavourites,
     favourites,
+    comparatedProduct,
+    addToComparator,
+    comparatedArray,
+    ComparatorFetch,
   };
 
   return <MainContext.Provider value={values}>{children}</MainContext.Provider>;

@@ -36,6 +36,16 @@ export default function NavBar() {
                   SmartShop...
                 </Link>
               </li>
+              <li className="nav-item d-flex">
+                <Link
+                  className="nav-link active ms-3"
+                  aria-current="page"
+                  to={"/Comparator"}
+                  id="nav-item"
+                >
+                  Comparatore
+                </Link>
+              </li>
             </ul>
           </div>
         </div>

@@ -1,0 +1,14 @@
+.compareButton {
+  border: #3685f7 solid 2px;
+  color: #3685f7;
+  background-color: transparent;
+  height: 60px;
+  width: 1000px;
+}
+
+.compareButton:hover {
+  background-color: #3685f7;
+  color: white;
+  transition: background-color 500ms linear;
+  transition: color 200ms linear;
+}

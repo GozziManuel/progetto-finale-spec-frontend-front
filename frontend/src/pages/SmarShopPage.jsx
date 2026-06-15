@@ -4,10 +4,15 @@ import { useEffect, useMemo, useState } from "react";
 
 export default function SmartShopPage() {
   const { product } = useMain();
+
+  // States
   const [searchBar, setSearchBar] = useState("");
   const [select, setSelect] = useState("");
+
+  // states filtered
   const [FilteredProduct, setFilteredProduct] = useState([...product]);
 
+  // Orders
   const [titleOrder, setTitleOrder] = useState(false);
   const [categoryOrder, setCategoryOrder] = useState(false);
 
@@ -33,7 +38,6 @@ export default function SmartShopPage() {
     });
   }, [FilteredProduct, select, searchBar]);
   //
-  //Select
 
   // ORderTitle
   const orderTitleProduct = () => {

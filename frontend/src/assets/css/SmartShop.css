@@ -18,6 +18,12 @@
   transition: color 200ms linear;
 }
 
+.clickedButton {
+  border: purple solid 2px;
+  color: white;
+  background-color: purple;
+}
+
 /* button 2 */
 .NavigateButton {
   border: lightblue solid 2px;

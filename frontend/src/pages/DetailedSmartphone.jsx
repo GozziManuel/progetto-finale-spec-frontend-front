@@ -19,7 +19,10 @@ export default function DetailedSmartphone() {
     resultProductDetailed();
   }, []);
 
+  //
+  //
   return (
+    // Detailed Card
     <section className="containerBase">
       <div>
         <h3 className="ColorMain orbitron">{productDetailed.title}</h3>

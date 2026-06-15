@@ -8,6 +8,8 @@ export default function FavouritesPage() {
   return (
     <section className="containerBase">
       <h1>I tuoi Preferiti!</h1>
+
+      {/* Mapping Favourites */}
       {favourites.map((el) => {
         return (
           <div

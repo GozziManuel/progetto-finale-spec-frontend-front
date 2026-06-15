@@ -45,7 +45,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 2. INFO SECTION: I Punti di Forza (Griglia a 3 colonne) */}
+        {/* INFO SECTION */}
         <section
           className="container py-5"
           style={{ borderTop: "1px solid #21262d" }}
