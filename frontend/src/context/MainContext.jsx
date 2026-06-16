@@ -36,15 +36,22 @@ export default function MainProvider({ children }) {
   //
   //
   // PReferiti
-  const [favourites, setFavourites] = useState([]);
+  const [favourites, setFavourites] = useState(() => {
+    const stored = localStorage.getItem("favourites");
+    return JSON.parse(stored);
+  });
+
+  useEffect(() => {
+    localStorage.setItem("favourites", JSON.stringify(favourites));
+  }, [favourites]);
 
   const addFavourites = (num) => {
     const obj = product.find((el) => el.id === num);
-    if (favourites.find((el) => el === obj)) {
-      const trueFavoutites = favourites.filter((el) => el !== obj);
-      setFavourites(trueFavoutites);
+
+    if (favourites.some((el) => el.id === obj.id)) {
+      setFavourites((current) => current.filter((el) => el.id !== obj.id));
     } else {
-      setFavourites((prev) => [...prev, obj]);
+      setFavourites((current) => [...current, obj]);
     }
   };
   //

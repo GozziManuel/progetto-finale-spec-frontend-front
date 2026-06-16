@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import Smartphone from "../cards/Smartphone";
 import { useMain } from "../context/MainContext";
+import { useState } from "react";
 
 export default function FavouritesPage() {
   const { favourites } = useMain();
-  console.log(favourites);
 
   return (
     <section className="containerBase">
@@ -40,7 +40,6 @@ export default function FavouritesPage() {
             );
           })
         )}
-        {}
       </div>
     </section>
   );

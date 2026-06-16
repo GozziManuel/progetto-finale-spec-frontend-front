@@ -21,7 +21,6 @@ export default function SmartShopPage() {
   // States
   const [searchBar, setSearchBar] = useState("");
   const [searchBarDebounced, setSearchBarDebounced] = useState("");
-
   const [select, setSelect] = useState("");
 
   // states filtered
