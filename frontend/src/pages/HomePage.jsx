@@ -30,7 +30,7 @@ export default function HomePage() {
               <div className=" gap-2 d-sm-flex justify-content-sm-center spaceGrotesk">
                 <Link
                   type="button"
-                  className="btn btn-outline-secondary   px-4 ButtonHome2  "
+                  className=" px-3 py-2 NavigateButton spaceGrotesk "
                   to={"/Smartshop"}
                 >
                   Scopri di più
@@ -63,7 +63,7 @@ export default function HomePage() {
               ))}
             </div>
             <Link
-              className=" mt-4 px-3 py-2  d-inline-block text-decoration-none NavigateButton spaceGrotesk"
+              className=" mt-4 px-3 py-2   NavigateButton spaceGrotesk"
               to={"/SmartShop"}
             >
               Vedi il negozio...

@@ -93,6 +93,7 @@ export default function ComparatorPage() {
                         ? "col-lg-3 col-md-6 col-sm-6"
                         : "col-lg-3 col-md-6 col-sm-6"
                 }
+                key={el.id}
               >
                 <div
                   className="border px-3 py-3"

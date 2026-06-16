@@ -75,7 +75,6 @@ export default function MainProvider({ children }) {
     const arrayId = comparatedProduct.map(
       (el) => `http://localhost:3001/products/${el.id}`,
     );
-    console.log(arrayId);
 
     await Promise.all(
       arrayId.map((url) => fetch(url).then((res) => res.json())),
@@ -85,9 +84,8 @@ export default function MainProvider({ children }) {
       }),
     );
   };
-  console.log(comparatedArray);
 
-  //(val) => setComparatedArray((curr) => [...curr, val.product]
+  //
   //
   // EXPORT
   const values = {

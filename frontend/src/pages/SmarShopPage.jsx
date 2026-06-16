@@ -1,12 +1,27 @@
 import { useMain } from "../context/MainContext";
 import Smartphone from "../cards/Smartphone";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 export default function SmartShopPage() {
   const { product } = useMain();
-
+  //
+  //
+  // Debounce
+  function debounce(callback, delay) {
+    let timer;
+    return (value) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        callback(value);
+      }, delay);
+    };
+  }
+  //
+  //
   // States
   const [searchBar, setSearchBar] = useState("");
+  const [searchBarDebounced, setSearchBarDebounced] = useState("");
+
   const [select, setSelect] = useState("");
 
   // states filtered
@@ -16,18 +31,38 @@ export default function SmartShopPage() {
   const [titleOrder, setTitleOrder] = useState(false);
   const [categoryOrder, setCategoryOrder] = useState(false);
 
+  //
+  // Making a copy product
   useEffect(() => {
     setFilteredProduct([...product]);
   }, [product]);
 
   //
-  // SearchBar
+  //
+  // Debounced search
+  const debouncedSetSearch = useCallback(
+    debounce((value) => {
+      setSearchBarDebounced(value);
+    }, 500),
+    [],
+  );
+
+  //
+  //
+  //HandleSearch
+  const handleSearch = (e) => {
+    const value = e.target.value;
+    setSearchBar(value);
+    debouncedSetSearch(value);
+  };
+
+  // Filtering
   const FilteredSearchProduct = useMemo(() => {
     return FilteredProduct.filter((el) => {
       const searchFilter = el.title
         .toLowerCase()
         .trim()
-        .includes(searchBar.toLowerCase().trim());
+        .includes(searchBarDebounced.toLowerCase().trim());
       if (select === "") {
         return searchFilter;
       }
@@ -36,7 +71,7 @@ export default function SmartShopPage() {
 
       return searchFilter && selectfilter;
     });
-  }, [FilteredProduct, select, searchBar]);
+  }, [FilteredProduct, select, searchBarDebounced]);
   //
 
   // ORderTitle
@@ -60,18 +95,26 @@ export default function SmartShopPage() {
   const orderCategoryProduct = () => {
     if (categoryOrder) {
       (FilteredSearchProduct.sort((a, b) =>
-        a.title.localeCompare(b.category, "it"),
+        a.category.localeCompare(b.category, "it"),
       ),
         setCategoryOrder(false));
     } else {
       (FilteredSearchProduct.sort((a, b) =>
-        b.title.localeCompare(a.category, "it"),
+        b.category.localeCompare(a.category, "it"),
       ),
         setCategoryOrder(true));
     }
   };
+
   //
-  //
+
+  // Getting category
+  const trueOptions = [];
+  const gettingOptions = product.map((el) => {
+    if (!trueOptions.includes(el.category)) {
+      trueOptions.push(el.category);
+    }
+  });
 
   return (
     <section className="containerBase">
@@ -82,9 +125,10 @@ export default function SmartShopPage() {
           Cerca il tuo telefono!
           <input
             type="text"
-            onChange={(e) => setSearchBar(e.target.value)}
+            onChange={handleSearch}
             value={searchBar}
             className="me-5 searchbar mt-1"
+            placeholder="..."
           />
           <div className=" mt-4">
             Cerca per categoria...
@@ -94,8 +138,14 @@ export default function SmartShopPage() {
               onChange={(e) => setSelect(e.target.value)}
               value={select}
             >
-              <option value=""></option>
-              <option value="Smartphone">Smartphone</option>
+              <option value="">Scegli una categoria!</option>
+              {trueOptions.map((el, id) => {
+                return (
+                  <option value={el} key={id}>
+                    {el}
+                  </option>
+                );
+              })}
             </select>
           </div>
         </div>

@@ -29,6 +29,12 @@
   border: lightblue solid 2px;
   color: lightblue;
   background-color: transparent;
+  text-decoration: none;
+  display: inline-block;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 .NavigateButton:hover {
   background-color: lightblue;
