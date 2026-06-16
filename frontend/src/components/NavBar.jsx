@@ -31,6 +31,13 @@ export default function NavBar() {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item d-flex">
+                <div
+                  className="nav-link  ms-3"
+                  aria-current="page"
+                  style={{ color: "white" }}
+                >
+                  |
+                </div>
                 <NavLink
                   className="nav-link  ms-3"
                   aria-current="page"
@@ -41,6 +48,15 @@ export default function NavBar() {
                 </NavLink>
               </li>
               <li className="nav-item d-flex">
+                <div
+                  className="nav-link  ms-3"
+                  aria-current="page"
+                  style={{ color: "white" }}
+                >
+                  |
+                </div>
+              </li>
+              <li className="nav-item d-flex">
                 <NavLink
                   className="nav-link  ms-3"
                   aria-current="page"
@@ -48,6 +64,25 @@ export default function NavBar() {
                   id="nav-item"
                 >
                   Comparatore
+                </NavLink>
+              </li>
+              <li className="nav-item d-flex">
+                <div
+                  className="nav-link  ms-3"
+                  aria-current="page"
+                  style={{ color: "white" }}
+                >
+                  |
+                </div>
+              </li>
+              <li className="nav-item d-flex">
+                <NavLink
+                  className="nav-link  ms-3"
+                  aria-current="page"
+                  to={"/Smartphone/Add"}
+                  id="nav-item"
+                >
+                  Aggiungi Smartphone!
                 </NavLink>
               </li>
             </ul>

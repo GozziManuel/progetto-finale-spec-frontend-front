@@ -6,6 +6,7 @@ import MainProvider from "./context/MainContext";
 import DetailedSmartphone from "./pages/DetailedSmartphone";
 import FavouritesPage from "./pages/FavouritesPage";
 import ComparatorPage from "./pages/ComparatorPage";
+import AddSmartphonePage from "./pages/AddSmartphonePage";
 function App() {
   return (
     <MainProvider>
@@ -17,6 +18,7 @@ function App() {
             <Route element={<DetailedSmartphone />} path="/Phone/:id" />
             <Route element={<FavouritesPage />} path="/favourites" />
             <Route element={<ComparatorPage />} path="/Comparator" />
+            <Route element={<AddSmartphonePage />} path="/Smartphone/Add" />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -22,7 +22,7 @@ export default function ToCompareCard({ category, title, id }) {
               disabled={true}
               className="clickedButton px-3 py-2 my-1 d-inline-block text-decoration-none"
             >
-              Comparato
+              Aggiunto!
             </button>
           ) : (
             <button

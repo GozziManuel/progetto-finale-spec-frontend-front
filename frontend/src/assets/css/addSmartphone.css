@@ -1,0 +1,35 @@
+form input {
+  border: lightblue solid;
+  width: 100%;
+}
+
+form select {
+  border: lightblue solid;
+  width: 100%;
+}
+.form-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 5px;
+}
+form label {
+  font-weight: bold;
+  background: linear-gradient(45deg, #00f2fe, #7f00ff);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.titleAdd {
+  color: #00f2fe;
+}
+
+.input-container {
+  width: 100%;
+  gap: 10px;
+  justify-content: center;
+}
+.form-container {
+  display: flex;
+  justify-content: center;
+}

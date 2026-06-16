@@ -13,7 +13,7 @@ export default function HomePage() {
     <>
       <div className="mainContainer">
         <section className="py-5 text-center container">
-          <div className="row py-lg-5 justify-content-center">
+          <div className="row justify-content-center">
             <div className="col-lg-8 col-md-10">
               <h1 className="fw-bold display-3 mb-3 orbitron ColorMain">
                 Il tuo negozio, <br /> sempre in tasca.

@@ -94,6 +94,29 @@ export default function MainProvider({ children }) {
 
   //
   //
+  // Submit Form POST
+
+  const addPhone = async (obj) => {
+    const PostData = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(obj),
+    };
+    const response = await fetch(`http://localhost:3001/products`, PostData);
+    const data = await response.json();
+    console.log(data);
+
+    if (data.success === true && data.product) {
+      setProduct((curr) => [...curr, data.product]);
+      return data;
+    }
+
+    throw new Error(data.message);
+  };
+  //
+  //
   // EXPORT
   const values = {
     product,
@@ -106,6 +129,7 @@ export default function MainProvider({ children }) {
     addToComparator,
     comparatedArray,
     ComparatorFetch,
+    addPhone,
   };
 
   return <MainContext.Provider value={values}>{children}</MainContext.Provider>;
