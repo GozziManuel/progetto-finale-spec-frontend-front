@@ -33,3 +33,11 @@ form label {
   display: flex;
   justify-content: center;
 }
+
+/* errors */
+.error {
+  background-color: rgba(255, 0, 0, 0.459);
+  padding: 10px;
+  border: red solid;
+  text-align: center;
+}

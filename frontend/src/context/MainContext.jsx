@@ -110,10 +110,10 @@ export default function MainProvider({ children }) {
 
     if (data.success === true && data.product) {
       setProduct((curr) => [...curr, data.product]);
+
       return data;
     }
-
-    throw new Error(data.message);
+    throw new Error(data.details.map((el) => el.message));
   };
   //
   //

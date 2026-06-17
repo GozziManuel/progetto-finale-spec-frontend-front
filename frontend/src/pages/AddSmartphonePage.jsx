@@ -1,10 +1,9 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import "../assets/css/addSmartphone.css";
 import { useMain } from "../context/MainContext";
 
 export default function AddSmartphonePage() {
   const { addPhone } = useMain();
-
   //   State for form
   const [formData, setFormData] = useState({
     title: "",
@@ -13,13 +12,23 @@ export default function AddSmartphonePage() {
     price: 0,
     releaseYear: 2000,
     system: "",
-    screenSize: 0,
-    ramGB: 0,
-    phoneGB: 0,
+    screenSize: 5.41,
+    ramGB: 4,
+    phoneGB: 64,
     phoneHz: 0,
-    wattCharge: 0,
+    wattCharge: 15,
     imageUrl: "",
   });
+  // Errors handler
+
+  const [error, setError] = useState(false);
+
+  // REFS
+  const TitleRef = useRef();
+  const CategoryRef = useRef();
+  const SystemRef = useRef();
+  const BrandRef = useRef();
+  const ImgRef = useRef();
 
   //   Tracing inputs
   const handleChange = (e) => {
@@ -32,10 +41,16 @@ export default function AddSmartphonePage() {
   };
 
   //   Submit Form
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    addPhone({
+
+    const newPhone = {
       ...formData,
+      title: TitleRef.current.value,
+      category: CategoryRef.current.value,
+      brand: BrandRef.current.value,
+      system: SystemRef.current.value,
+      imageUrl: ImgRef.current.value,
       phoneHz: parseFloat(formData.phoneHz),
       price: parseFloat(formData.price),
       releaseYear: parseFloat(formData.releaseYear),
@@ -43,14 +58,59 @@ export default function AddSmartphonePage() {
       ramGB: parseFloat(formData.ramGB),
       phoneGB: parseFloat(formData.phoneGB),
       wattCharge: parseFloat(formData.wattCharge),
-    });
-    console.log(formData);
+    };
+    if (
+      TitleRef.current.value.trim() === "" ||
+      CategoryRef.current.value.trim() === "" ||
+      BrandRef.current.value.trim() === "" ||
+      SystemRef.current.value.trim() === "" ||
+      ImgRef.current.value.trim() === "" ||
+      formData.phoneHz === ""
+    ) {
+      console.error("vuoto");
+      setError(true);
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+      return;
+    } else {
+      try {
+        await addPhone(newPhone);
+        console.log("aggiunto");
+        setError(false);
+        setFormData({
+          title: (TitleRef.current.value = ""),
+          category: (CategoryRef.current.value = ""),
+          brand: (BrandRef.current.value = ""),
+          system: (SystemRef.current.value = ""),
+          imageUrl: (ImgRef.current.value = ""),
+          price: 0,
+          releaseYear: 2000,
+          screenSize: 5.41,
+          ramGB: 4,
+          phoneGB: 64,
+          phoneHz: 0,
+          wattCharge: 15,
+        });
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
+
+    console.log(newPhone);
   };
   return (
     <section className="containerBase">
       <h2 className="mb-5 orbitron titleAdd">Aggiungi Nuovo Smartphone</h2>
       <div className="spaceGrotesk">
         <form onSubmit={handleSubmit} className=" row form-container">
+          {error && (
+            <div className="error my-5">
+              <h3 className=" ">Casella di Testo vuota ricontrolla!</h3>
+            </div>
+          )}
+
           {/* Info Base */}
           <h4>Info Base</h4>
           <div className="form-group col-lg-6 col-md-6  mt-2">
@@ -58,8 +118,9 @@ export default function AddSmartphonePage() {
             <input
               type="text"
               name="title"
-              value={formData.title}
-              onChange={handleChange}
+              // value={formData.title}
+              // onChange={handleChange}
+              ref={TitleRef}
               //   required
             />
           </div>
@@ -67,8 +128,9 @@ export default function AddSmartphonePage() {
             <label>Categoria:</label>
             <select
               name="category"
-              value={formData.category}
-              onChange={handleChange}
+              // value={formData.category}
+              // onChange={handleChange}
+              ref={CategoryRef}
             >
               <option value="">Scegli la categoria!</option>
 
@@ -81,8 +143,9 @@ export default function AddSmartphonePage() {
             <input
               type="text"
               name="brand"
-              value={formData.brand}
-              onChange={handleChange}
+              // value={formData.brand}
+              // onChange={handleChange}
+              ref={BrandRef}
               //   required
             />
           </div>
@@ -117,8 +180,9 @@ export default function AddSmartphonePage() {
             <label>Sistema Operativo:</label>
             <select
               name="system"
-              value={formData.system}
-              onChange={handleChange}
+              // value={formData.system}
+              // onChange={handleChange}
+              ref={SystemRef}
             >
               <option value="">Scegli il Sistema operativo!</option>
               <option value="Android">Android</option>
@@ -135,7 +199,7 @@ export default function AddSmartphonePage() {
                 value={formData.screenSize}
                 onChange={handleChange}
                 step="0.01"
-                min="0"
+                min="5.41"
                 // required
               />
               <p className="mb-0">pollici</p>
@@ -151,7 +215,8 @@ export default function AddSmartphonePage() {
                 name="ramGB"
                 value={formData.ramGB}
                 onChange={handleChange}
-                min="1"
+                min="4"
+                step={4}
                 // required
               />{" "}
               <p className="mb-0">gb</p>
@@ -166,7 +231,7 @@ export default function AddSmartphonePage() {
                 name="phoneGB"
                 value={formData.phoneGB}
                 onChange={handleChange}
-                min="1"
+                min="64"
                 // required
               />
               <p className="mb-0">gb</p>
@@ -199,7 +264,7 @@ export default function AddSmartphonePage() {
                 name="wattCharge"
                 value={formData.wattCharge}
                 onChange={handleChange}
-                min="1"
+                min="15"
                 // required
               />
               <p className="mb-0">Watt</p>
@@ -214,8 +279,9 @@ export default function AddSmartphonePage() {
             <input
               type="url"
               name="imageUrl"
-              value={formData.imageUrl}
-              onChange={handleChange}
+              // value={formData.imageUrl}
+              // onChange={handleChange}
+              ref={ImgRef}
             />
           </div>
           <div className="d-flex justify-content-center">
