@@ -1,4 +1,5 @@
 .navbar {
+  position: relative;
   background-color: #161b22; /* Grigio/blu scuro */
   border-bottom: 1px solid #21262d; /* Linea sottile di divisione */
   --bs-navbar-toggler-icon-bg: url(
@@ -52,4 +53,28 @@
 }
 .navbar-toggler {
   border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* YesAlert */
+
+.trueAlert {
+  background-color: rgba(6, 209, 6, 0.541);
+  color: white;
+  border: 2px solid rgb(1, 68, 1);
+  margin-top: 20px;
+  animation: popUpBounce 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+@keyframes popUpBounce {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.1);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }

@@ -1,12 +1,21 @@
 import { useRef, useState } from "react";
-import "../assets/css/addSmartphone.css";
-import { useCrud } from "../context/CrudContext";
-import { useNavigate } from "react-router-dom";
 import PhoneForm from "../components/PhoneForm";
+import { useCrud } from "../context/CrudContext";
 
-export default function AddSmartphonePage() {
-  const { addPhone } = useCrud();
-  const navigate = useNavigate();
+export default function UptadeModal({ show, setShow, productDetailed }) {
+  // Imports
+  const { uptadePhone } = useCrud();
+  // REFS
+  const TitleRef = useRef();
+  const CategoryRef = useRef();
+  const SystemRef = useRef();
+  const BrandRef = useRef();
+  const ImgRef = useRef();
+  const modalBodyRef = useRef(null);
+
+  // Errors handler
+  const [error, setError] = useState(false);
+  const [errorText, setErrorText] = useState("");
 
   //   State for form
   const [formData, setFormData] = useState({
@@ -23,19 +32,9 @@ export default function AddSmartphonePage() {
     wattCharge: 15,
     imageUrl: "",
   });
-  // Errors handler
-
-  const [error, setError] = useState(false);
-  const [errorText, setErrorText] = useState("");
-
-  // REFS
-  const TitleRef = useRef();
-  const CategoryRef = useRef();
-  const SystemRef = useRef();
-  const BrandRef = useRef();
-  const ImgRef = useRef();
 
   //   Submit Form
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -60,7 +59,7 @@ export default function AddSmartphonePage() {
       console.error("vuoto");
       setError(true);
       setErrorText("Casella title vuota!");
-      window.scrollTo({
+      modalBodyRef.current.scrollTo({
         top: 0,
         behavior: "smooth",
       });
@@ -69,7 +68,7 @@ export default function AddSmartphonePage() {
       console.error("vuoto");
       setError(true);
       setErrorText("Casella Categoria vuota!");
-      window.scrollTo({
+      modalBodyRef.current.scrollTo({
         top: 0,
         behavior: "smooth",
       });
@@ -78,7 +77,7 @@ export default function AddSmartphonePage() {
       console.error("vuoto");
       setError(true);
       setErrorText("Casella Brand vuota!");
-      window.scrollTo({
+      modalBodyRef.current.scrollTo({
         top: 0,
         behavior: "smooth",
       });
@@ -87,7 +86,7 @@ export default function AddSmartphonePage() {
       console.error("vuoto");
       setError(true);
       setErrorText("Casella System vuota!");
-      window.scrollTo({
+      modalBodyRef.current.scrollTo({
         top: 0,
         behavior: "smooth",
       });
@@ -96,7 +95,7 @@ export default function AddSmartphonePage() {
       console.error("vuoto");
       setError(true);
       setErrorText("Casella Image vuota!");
-      window.scrollTo({
+      modalBodyRef.current.scrollTo({
         top: 0,
         behavior: "smooth",
       });
@@ -105,7 +104,7 @@ export default function AddSmartphonePage() {
       console.error("vuoto");
       setError(true);
       setErrorText("Casella Hertz vuota!");
-      window.scrollTo({
+      modalBodyRef.current.scrollTo({
         top: 0,
         behavior: "smooth",
       });
@@ -114,49 +113,48 @@ export default function AddSmartphonePage() {
       // else Finish validation!
     } else {
       try {
-        await addPhone(newPhone);
-        console.log("aggiunto");
+        setShow(false);
+        await uptadePhone(productDetailed.id, newPhone);
         setError(false);
-        setFormData({
-          title: (TitleRef.current.value = ""),
-          category: (CategoryRef.current.value = ""),
-          brand: (BrandRef.current.value = ""),
-          system: (SystemRef.current.value = ""),
-          imageUrl: (ImgRef.current.value = ""),
-          price: 0,
-          releaseYear: 2000,
-          screenSize: 5.41,
-          ramGB: 4,
-          phoneGB: 64,
-          phoneHz: 0,
-          wattCharge: 15,
-        });
-        navigate("/SmartShop");
+        console.log("aggiunto");
       } catch (error) {
         console.log(error.message);
       }
     }
-
-    console.log(newPhone);
   };
-
   return (
-    <section className="containerBase">
-      <h2 className="mb-5 orbitron titleAdd">Aggiungi Nuovo Smartphone</h2>
-      <div className="spaceGrotesk">
-        <PhoneForm
-          formData={formData}
-          setFormData={setFormData}
-          error={error}
-          errorText={errorText}
-          handleSubmit={handleSubmit}
-          TitleRef={TitleRef}
-          CategoryRef={CategoryRef}
-          SystemRef={SystemRef}
-          BrandRef={BrandRef}
-          ImgRef={ImgRef}
-        />
-      </div>
-    </section>
+    <>
+      {show && (
+        <div className="updateModal">
+          <div className="modalContent" ref={modalBodyRef}>
+            <div className="">
+              <div className="d-flex justify-content-between">
+                <h1 className=" fs-5" id="exampleModalLabel">
+                  Modifica il prodotto!
+                </h1>
+                <button className="btnDelete" onClick={setShow}>
+                  <i className="bi bi-x-lg"></i>
+                </button>
+              </div>
+              <div className="modal-body">
+                <PhoneForm
+                  formData={formData}
+                  setFormData={setFormData}
+                  error={error}
+                  errorText={errorText}
+                  handleSubmit={handleSubmit}
+                  TitleRef={TitleRef}
+                  CategoryRef={CategoryRef}
+                  SystemRef={SystemRef}
+                  BrandRef={BrandRef}
+                  ImgRef={ImgRef}
+                  productDetailed={productDetailed}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 }

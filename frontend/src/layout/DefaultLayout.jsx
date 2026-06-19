@@ -5,7 +5,7 @@ export default function DefaultLayout() {
   return (
     <div className="d-flex flex-column min-vh-100">
       <NavBar />
-      <main className="flex-grow-1 " style={{ marginTop: "90px" }}>
+      <main className="flex-grow-1 ">
         <Outlet />
       </main>
       <Link className=" favouritestar spaceGrotesk" to={"/favourites"}>

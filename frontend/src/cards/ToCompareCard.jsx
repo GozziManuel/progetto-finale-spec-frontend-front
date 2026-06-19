@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import "../assets/css/SmartShop.css";
 import { useMain } from "../context/MainContext";
+import { memo } from "react";
 
-export default function ToCompareCard({ category, title, id }) {
+export default memo(function ToCompareCard({ category, title, id }) {
   const { comparatedProduct, addToComparator } = useMain();
 
   const isClicked = comparatedProduct?.some((f) => f.id === id);
@@ -36,4 +37,4 @@ export default function ToCompareCard({ category, title, id }) {
       </div>
     </div>
   );
-}
+});

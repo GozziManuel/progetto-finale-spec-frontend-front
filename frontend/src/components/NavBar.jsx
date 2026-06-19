@@ -1,10 +1,15 @@
 import { Link, NavLink } from "react-router-dom";
 import "../assets/css/Navbar.css";
+import { useCrud } from "../context/CrudContext";
 
 export default function NavBar() {
   return (
     <>
-      <nav className="navbar navbar-expand-lg fixed-top " id="">
+      <nav
+        className="navbar navbar-expand-lg fixed-top "
+        id=""
+        style={{ zIndex: "9" }}
+      >
         <div className="container-fluid">
           <div className="d-flex align-items-center">
             <img src="/pocketShop-icon.png" alt="" className="iconImg" />
@@ -31,13 +36,6 @@ export default function NavBar() {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item d-flex">
-                <div
-                  className="nav-link  ms-3"
-                  aria-current="page"
-                  style={{ color: "white" }}
-                >
-                  |
-                </div>
                 <NavLink
                   className="nav-link  ms-3"
                   aria-current="page"
@@ -47,15 +45,7 @@ export default function NavBar() {
                   SmartShop...
                 </NavLink>
               </li>
-              <li className="nav-item d-flex">
-                <div
-                  className="nav-link  ms-3"
-                  aria-current="page"
-                  style={{ color: "white" }}
-                >
-                  |
-                </div>
-              </li>
+
               <li className="nav-item d-flex">
                 <NavLink
                   className="nav-link  ms-3"
@@ -66,15 +56,7 @@ export default function NavBar() {
                   Comparatore
                 </NavLink>
               </li>
-              <li className="nav-item d-flex">
-                <div
-                  className="nav-link  ms-3"
-                  aria-current="page"
-                  style={{ color: "white" }}
-                >
-                  |
-                </div>
-              </li>
+
               <li className="nav-item d-flex">
                 <NavLink
                   className="nav-link  ms-3"

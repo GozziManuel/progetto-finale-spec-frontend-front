@@ -1,8 +1,11 @@
 import { useMain } from "../context/MainContext";
 import Smartphone from "../cards/Smartphone";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCrud } from "../context/CrudContext";
 
 export default function SmartShopPage() {
+  const { successAdd } = useCrud();
+
   const { product } = useMain();
   //
   //
@@ -174,6 +177,11 @@ export default function SmartShopPage() {
           </div>
         </div>
       </div>
+      {successAdd && (
+        <div class="trueAlert py-3 px-5 spaceGrotesk text-center">
+          Aggiunto!
+        </div>
+      )}
       <div className="row g-5 mt-0  ">
         {FilteredSearchProduct.length === 0 ? (
           <h3 className="spaceGrotesk ColorMain">

@@ -1,3 +1,4 @@
+/* Fonts */
 .orbitron {
   font-family: "Orbitron", sans-serif;
   font-optical-sizing: auto;
@@ -10,16 +11,25 @@
   font-weight: normal;
   font-style: normal;
 }
+
+/* background */
 body {
   background-color: #0d1117;
   color: #f0f6fc;
 }
+
+/* color Main */
 .ColorMain {
   background: linear-gradient(45deg, #00f2fe, #7f00ff);
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
+/* main Margin */
+
+main {
+  margin-top: 90px;
+}
 /* Container */
 .containerBase {
   margin-right: 120px;
@@ -53,6 +63,11 @@ body {
 @media screen and (max-width: 575px) {
   .mediaMargin {
     margin-top: 70px;
+  }
+}
+@media screen and (max-width: 298px) {
+  main {
+    margin-top: 130px;
   }
 }
 /* Favourites button */

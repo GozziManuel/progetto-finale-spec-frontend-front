@@ -1,12 +1,26 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useMain } from "../context/MainContext";
 import { useEffect, useState } from "react";
+import { useCrud } from "../context/CrudContext";
+import UptadeModal from "../components/UptadeModal";
 
 export default function DetailedSmartphone() {
   // Importing from context
   const { product, productsDetailed } = useMain();
-  const [productDetailed, setProductDetailed] = useState([]);
+  const { removePhone } = useCrud();
 
+  // states
+  const [productDetailed, setProductDetailed] = useState([]);
+  const [modalButton, setModalButton] = useState(false);
+
+  //
+  //
+  // state for modal
+  const [show, setShow] = useState(false);
+
+  // Navigate
+  //
+  const navigate = useNavigate();
   // Id params
   const { id } = useParams();
 
@@ -17,8 +31,18 @@ export default function DetailedSmartphone() {
       setProductDetailed(result.product);
     };
     resultProductDetailed();
-  }, []);
+  }, [product, id, productsDetailed]);
+  //
+  //
 
+  const removePhoneSubmit = (id) => {
+    try {
+      removePhone(id);
+      navigate("/SmartShop");
+    } catch (error) {
+      console.error(error);
+    }
+  };
   //
   //
   return (
@@ -63,6 +87,45 @@ export default function DetailedSmartphone() {
         <h3 className="mt-4 spaceGrotesk ColorMain">
           {productDetailed.price} &euro;
         </h3>
+        {!modalButton ? (
+          <button
+            className="btnDelete spaceGrotesk p-2"
+            onClick={() => setModalButton(true)}
+          >
+            Elimina
+          </button>
+        ) : (
+          <div className="spaceGrotesk d-flex flex-column  ">
+            Sei sicuro di volerlo eliminare?
+            <div>
+              <button
+                className="undoButton me-4"
+                onClick={() => setModalButton(false)}
+              >
+                Annulla
+              </button>
+              <button
+                className="btnDelete"
+                onClick={() => removePhoneSubmit(id)}
+              >
+                Conferma
+              </button>
+            </div>
+          </div>
+        )}
+        {!modalButton && (
+          <button
+            className="undoButton spaceGrotesk p-2 ms-4"
+            onClick={() => setShow(true)}
+          >
+            Modifica
+          </button>
+        )}
+        <UptadeModal
+          show={show}
+          setShow={() => setShow(false)}
+          productDetailed={productDetailed}
+        />
       </div>
     </section>
   );

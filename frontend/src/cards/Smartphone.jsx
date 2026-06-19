@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import "../assets/css/SmartShop.css";
 import { useMain } from "../context/MainContext";
+import { memo } from "react";
 
-export default function Smartphone({ category, title, id }) {
+export default memo(function Smartphone({ category, title, id }) {
   const { addFavourites, favourites } = useMain();
 
   const isStarred = favourites.some((f) => f.id === id);
@@ -36,4 +37,4 @@ export default function Smartphone({ category, title, id }) {
       </div>
     </div>
   );
-}
+});
