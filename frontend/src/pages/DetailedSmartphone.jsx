@@ -12,6 +12,7 @@ export default function DetailedSmartphone() {
   // states
   const [productDetailed, setProductDetailed] = useState([]);
   const [modalButton, setModalButton] = useState(false);
+  console.log(productDetailed);
 
   //
   //
@@ -34,6 +35,12 @@ export default function DetailedSmartphone() {
   }, [product, id, productsDetailed]);
   //
   //
+  // removed Navigation
+  useEffect(() => {
+    if (!productDetailed) {
+      navigate("/");
+    }
+  }, [productDetailed]);
 
   const removePhoneSubmit = (id) => {
     try {
@@ -49,9 +56,9 @@ export default function DetailedSmartphone() {
     // Detailed Card
     <section className="containerBase">
       <div>
-        <h3 className="ColorMain orbitron">{productDetailed.title}</h3>
+        <h3 className="ColorMain orbitron">{productDetailed?.title}</h3>
         <h4 className="spaceGrotesk">
-          {productDetailed.brand} - {productDetailed.system}
+          {productDetailed?.brand} - {productDetailed?.system}
         </h4>
         <div className="d-flex containerInfoPhone">
           <div className="">
@@ -64,28 +71,28 @@ export default function DetailedSmartphone() {
           <div className="spaceGrotesk">
             <p>
               <span className="titleSpan">Gigabyte Interni: </span>
-              {productDetailed.phoneGB}gb
+              {productDetailed?.phoneGB}gb
             </p>
             <p>
               <span className="titleSpan">Gigabyte di ram: </span>
-              {productDetailed.ramGB}gb
+              {productDetailed?.ramGB}gb
             </p>
             <p>
               <span className="titleSpan">Hertz: </span>
-              {productDetailed.phoneHz}hz
+              {productDetailed?.phoneHz}hz
             </p>
             <p>
               <span className="titleSpan">Screen Size: </span>
-              {productDetailed.screenSize} pollici
+              {productDetailed?.screenSize} pollici
             </p>
             <p>
               <span className="titleSpan">releaseYear: </span>
-              {productDetailed.releaseYear}
+              {productDetailed?.releaseYear}
             </p>
           </div>
         </div>
         <h3 className="mt-4 spaceGrotesk ColorMain">
-          {productDetailed.price} &euro;
+          {productDetailed?.price} &euro;
         </h3>
         {!modalButton ? (
           <button

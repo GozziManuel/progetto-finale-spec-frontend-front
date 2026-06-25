@@ -4,7 +4,8 @@ import { useMain } from "./MainContext";
 const CrudContext = createContext();
 
 export default function ({ children }) {
-  const { product, setProduct } = useMain();
+  const { product, setProduct, favourites, setFavourites } = useMain();
+  console.log(favourites);
 
   //
   const [successAdd, setSuccessAdd] = useState(false);
@@ -44,6 +45,7 @@ export default function ({ children }) {
   // RemovePhone
 
   const removePhone = async (index) => {
+    const CurrentPhone = product.find((el) => el.id === parseInt(index));
     const PostData = {
       method: "DELETE",
       headers: {
@@ -58,6 +60,12 @@ export default function ({ children }) {
     console.log(data);
 
     if (data.success === true) {
+      if (CurrentPhone) {
+        const removedPhoneFavourite = favourites.filter(
+          (el) => el.id !== parseInt(index),
+        );
+        setFavourites(removedPhoneFavourite);
+      }
       const removedPhone = product.filter((el) => el.id !== parseInt(index));
       setProduct(removedPhone);
       return data;

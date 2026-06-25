@@ -36,9 +36,19 @@ export default function MainProvider({ children }) {
   //
   //
   // PReferiti
+
   const [favourites, setFavourites] = useState(() => {
     const stored = localStorage.getItem("favourites");
-    return JSON.parse(stored);
+    if (!stored) {
+      return [];
+    }
+
+    try {
+      const parsed = JSON.parse(stored);
+      return parsed;
+    } catch (error) {
+      return [];
+    }
   });
 
   useEffect(() => {
