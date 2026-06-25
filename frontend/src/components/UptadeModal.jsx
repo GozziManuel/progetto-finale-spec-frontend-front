@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
-import PhoneForm from "../components/PhoneForm";
 import { useCrud } from "../context/CrudContext";
+import PhoneForm from "./PhoneForm";
 
 export default function UptadeModal({ show, setShow, productDetailed }) {
   // Imports

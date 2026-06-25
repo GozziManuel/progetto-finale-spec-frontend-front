@@ -38,7 +38,9 @@ export default function PhoneForm({
           type="text"
           name="title"
           // onChange={handleChange}
-          defaultValue={productDetailed.title}
+          defaultValue={
+            productDetailed?.title === undefined ? "" : productDetailed.title
+          }
           ref={TitleRef}
           //   required
         />
@@ -47,7 +49,11 @@ export default function PhoneForm({
         <label>Categoria:</label>
         <select
           name="category"
-          defaultValue={productDetailed.category}
+          defaultValue={
+            productDetailed?.category === undefined
+              ? ""
+              : productDetailed.category
+          }
           // onChange={handleChange}
           ref={CategoryRef}
         >
@@ -62,7 +68,9 @@ export default function PhoneForm({
         <input
           type="text"
           name="brand"
-          defaultValue={productDetailed.brand}
+          defaultValue={
+            productDetailed?.brand === undefined ? "" : productDetailed.brand
+          }
           // onChange={handleChange}
           ref={BrandRef}
           //   required
@@ -100,7 +108,9 @@ export default function PhoneForm({
         <label>Sistema Operativo:</label>
         <select
           name="system"
-          defaultValue={productDetailed.system}
+          defaultValue={
+            productDetailed?.system === undefined ? "" : productDetailed.system
+          }
           // onChange={handleChange}
           ref={SystemRef}
         >
@@ -199,7 +209,11 @@ export default function PhoneForm({
         <input
           type="url"
           name="imageUrl"
-          defaultValue={productDetailed.imageUrl}
+          defaultValue={
+            productDetailed?.imageUrl === undefined
+              ? ""
+              : productDetailed.imageUrl
+          }
           // onChange={handleChange}
           ref={ImgRef}
         />
