@@ -141,6 +141,10 @@ export default function ComparatorPage() {
                           <span className="titleSpan">releaseYear: </span>
                           {el.releaseYear}
                         </p>
+                        <p>
+                          <span className="titleSpan">wattCharge: </span>
+                          {el.wattCharge} W
+                        </p>
                       </div>
                     </div>
                   </div>

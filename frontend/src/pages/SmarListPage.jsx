@@ -3,7 +3,7 @@ import Smartphone from "../cards/Smartphone";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useCrud } from "../context/CrudContext";
 
-export default function SmartShopPage() {
+export default function SmartListPage() {
   const { successAdd } = useCrud();
 
   const { product } = useMain();
@@ -120,7 +120,7 @@ export default function SmartShopPage() {
 
   return (
     <section className="containerBase">
-      <h1 className="orbitron ColorMain">SmartShop</h1>
+      <h1 className="orbitron ColorMain">SmartList</h1>
       <h2 className="spaceGrotesk">Scegli il tuo telefono!</h2>
       <div className="d-flex spaceGrotesk justify-content-between  flex-wrap">
         <div className="d-flex flex-column">

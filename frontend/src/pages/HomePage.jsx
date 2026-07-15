@@ -15,23 +15,27 @@ export default function HomePage() {
         <section className="py-5 text-center container">
           <div className="row justify-content-center">
             <div className="col-lg-8 col-md-10">
-              <h1 className="fw-bold display-3 mb-3 orbitron ColorMain">
-                Il tuo negozio, <br /> sempre in tasca.
+              <h1 className="fw-bold display-2 mb-3 orbitron ColorMain ">
+                PocketGuide
               </h1>
+              <h2 className=" display-5 mb-3 orbitron ColorMain">
+                Il tuo consulente tech, <br /> sempre in tasca.
+              </h2>
 
               <p className=" fs-4 mb-4 white spaceGrotesk">
-                PocketShop rivoluziona il tuo modo di scegliere la tecnologia.
+                PocketGuide rivoluziona il tuo modo di scegliere la tecnologia.
                 Esplora gli ultimi top di gamma, confronta le specifiche
-                tecniche in un tocco e acquista il tuo prossimo smartphone in
-                totale sicurezza al miglior prezzo del web.
+                tecniche in un tocco e trova il tuo prossimo smartphone in
+                totale sicurezza, analizzando le migliori caratteristiche del
+                web.
               </p>
 
               {/* Buttons */}
               <div className=" gap-2 d-sm-flex justify-content-sm-center spaceGrotesk">
                 <Link
-                  type="button"
+                  type="b utton"
                   className=" px-3 py-2 NavigateButton spaceGrotesk "
-                  to={"/Smartshop"}
+                  to={"/SmartList"}
                 >
                   Scopri di più
                 </Link>
@@ -64,7 +68,7 @@ export default function HomePage() {
             </div>
             <Link
               className=" mt-4 px-3 py-2   NavigateButton spaceGrotesk"
-              to={"/SmartShop"}
+              to={"/SmartList"}
             >
               Vedi il negozio...
             </Link>

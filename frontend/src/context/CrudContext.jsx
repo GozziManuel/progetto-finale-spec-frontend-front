@@ -5,7 +5,6 @@ const CrudContext = createContext();
 
 export default function ({ children }) {
   const { product, setProduct, favourites, setFavourites } = useMain();
-  console.log(favourites);
 
   //
   const [successAdd, setSuccessAdd] = useState(false);

@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { useEffect } from "react";
 import { useCrud } from "../context/CrudContext";
 import PhoneForm from "./PhoneForm";
 
@@ -22,14 +23,14 @@ export default function UptadeModal({ show, setShow, productDetailed }) {
     title: "",
     category: "",
     brand: "",
-    price: 50,
-    releaseYear: 2000,
+    price: productDetailed?.price ?? 50,
+    releaseYear: productDetailed?.releaseYear ?? 2000,
     system: "",
-    screenSize: 5.41,
-    ramGB: 4,
-    phoneGB: 64,
-    phoneHz: 0,
-    wattCharge: 15,
+    screenSize: productDetailed?.screenSize ?? 5.41,
+    ramGB: productDetailed?.ramGB ?? 4,
+    phoneGB: productDetailed?.phoneGB ?? 64,
+    phoneHz: productDetailed?.phoneHz ?? "",
+    wattCharge: productDetailed?.wattCharge ?? 15,
     imageUrl: "",
   });
 

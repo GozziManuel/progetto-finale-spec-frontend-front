@@ -19,7 +19,7 @@ export default function AddSmartphonePage() {
     screenSize: 5.41,
     ramGB: 4,
     phoneGB: 64,
-    phoneHz: 0,
+    phoneHz: "",
     wattCharge: 15,
     imageUrl: "",
   });
@@ -128,10 +128,10 @@ export default function AddSmartphonePage() {
           screenSize: 5.41,
           ramGB: 4,
           phoneGB: 64,
-          phoneHz: 0,
+          phoneHz: "",
           wattCharge: 15,
         });
-        navigate("/SmartShop");
+        navigate("/SmartList");
       } catch (error) {
         console.log(error.message);
       }

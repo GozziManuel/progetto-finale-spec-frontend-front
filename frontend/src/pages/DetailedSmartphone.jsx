@@ -12,7 +12,6 @@ export default function DetailedSmartphone() {
   // states
   const [productDetailed, setProductDetailed] = useState([]);
   const [modalButton, setModalButton] = useState(false);
-  console.log(productDetailed);
 
   //
   //
@@ -45,7 +44,7 @@ export default function DetailedSmartphone() {
   const removePhoneSubmit = (id) => {
     try {
       removePhone(id);
-      navigate("/SmartShop");
+      navigate("/SmartList");
     } catch (error) {
       console.error(error);
     }
@@ -88,6 +87,10 @@ export default function DetailedSmartphone() {
             <p>
               <span className="titleSpan">releaseYear: </span>
               {productDetailed?.releaseYear}
+            </p>
+            <p>
+              <span className="titleSpan">Watt di Ricarica: </span>
+              {productDetailed?.wattCharge} W
             </p>
           </div>
         </div>

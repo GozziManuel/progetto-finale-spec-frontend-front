@@ -19,7 +19,7 @@ export default function NavBar() {
               to={"/"}
               id="navbar-brand"
             >
-              PocketShop
+              PocketGuide
             </NavLink>
           </div>
           <button
@@ -39,10 +39,10 @@ export default function NavBar() {
                 <NavLink
                   className="nav-link  ms-3"
                   aria-current="page"
-                  to={"/SmartShop"}
+                  to={"/SmartList"}
                   id="nav-item"
                 >
-                  SmartShop...
+                  SmartList...
                 </NavLink>
               </li>
 
@@ -65,6 +65,17 @@ export default function NavBar() {
                   id="nav-item"
                 >
                   Aggiungi Smartphone!
+                </NavLink>
+              </li>
+
+              <li className="nav-item d-flex">
+                <NavLink
+                  className="nav-link  ms-3"
+                  aria-current="page"
+                  to={"/Smartphone/quiz"}
+                  id="nav-item"
+                >
+                  Quiz!
                 </NavLink>
               </li>
             </ul>

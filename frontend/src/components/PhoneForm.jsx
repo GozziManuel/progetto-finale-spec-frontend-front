@@ -42,7 +42,7 @@ export default function PhoneForm({
             productDetailed?.title === undefined ? "" : productDetailed.title
           }
           ref={TitleRef}
-          //   required
+          // required
         />
       </div>
       <div className="form-group col-lg-6 col-md-6 mt-2">
@@ -73,7 +73,7 @@ export default function PhoneForm({
           }
           // onChange={handleChange}
           ref={BrandRef}
-          //   required
+          // required
         />
       </div>
 
@@ -85,7 +85,7 @@ export default function PhoneForm({
           value={formData.price}
           onChange={handleChange}
           min={50}
-          //   required
+          required
         />
       </div>
 
@@ -98,7 +98,7 @@ export default function PhoneForm({
           onChange={handleChange}
           min="2000"
           max={new Date().getFullYear()}
-          //   required
+          required
         />
       </div>
 
@@ -130,7 +130,7 @@ export default function PhoneForm({
             onChange={handleChange}
             step="0.01"
             min="5.41"
-            // required
+            required
           />
           <p className="mb-0">pollici</p>
         </div>
@@ -147,7 +147,7 @@ export default function PhoneForm({
             onChange={handleChange}
             min="4"
             step={4}
-            // required
+            required
           />{" "}
           <p className="mb-0">gb</p>
         </div>
@@ -162,7 +162,7 @@ export default function PhoneForm({
             value={formData.phoneGB}
             onChange={handleChange}
             min="64"
-            // required
+            required
           />
           <p className="mb-0">gb</p>
         </div>
@@ -195,7 +195,7 @@ export default function PhoneForm({
             value={formData.wattCharge}
             onChange={handleChange}
             min="15"
-            // required
+            required
           />
           <p className="mb-0">Watt</p>
         </div>

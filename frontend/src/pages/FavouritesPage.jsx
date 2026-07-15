@@ -19,7 +19,7 @@ export default function FavouritesPage() {
             </h2>
             <Link
               className="seeMoreButton px-3 py-2 my-1 d-inline-block text-decoration-none"
-              to={`/Smartshop`}
+              to={`/SmartList`}
             >
               Torna allo shop!
             </Link>
